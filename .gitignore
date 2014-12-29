@@ -1,7 +1,10 @@
+config.js
+config.ts
 node_modules
 data
 .tscache
 Debug
+
 
 
 # Windows image file caches

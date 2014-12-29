@@ -3,7 +3,7 @@ import jobModel = require('../models/job');
 
 export class db {
     constructor(dbName:string){
-        mongoose.connect('mongodb://localhost/'+dbName, (err) => {
+        mongoose.connect(''+dbName, (err) => {
             if (err) {
                 throw err;
             }

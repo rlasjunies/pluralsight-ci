@@ -1,9 +1,11 @@
 var express = require("express");
 var vash = require("vash");
+var xConfig = require("./webapi/services/config");
 var xDb = require("./webapi/services/db");
 var xJobsGet = require("./webapi/routes/jobsGet");
 var app = express();
-new xDb.db("jobfinder");
+//new xDb.db("mongodb://localhost/jobfinder");
+new xDb.db(xConfig.MONGOLAB_CONNECT_STRING);
 app.set("view engine", "vash");
 app.set("views", __dirname + "/views");
 app.engine(".html", vash.renderFile);

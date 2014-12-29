@@ -2,7 +2,7 @@ var mongoose = require("mongoose");
 var jobModel = require('../models/job');
 var db = (function () {
     function db(dbName) {
-        mongoose.connect('mongodb://localhost/' + dbName, function (err) {
+        mongoose.connect('' + dbName, function (err) {
             if (err) {
                 throw err;
             }
