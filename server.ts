@@ -6,8 +6,10 @@ import xJobsGet = require("./webapi/routes/jobsGet");
 
 var app = express();
 
-//new xDb.db("mongodb://localhost/jobfinder");
-new xDb.db(xConfig.MONGOLAB_CONNECT_STRING);
+xDb.connectDB(xConfig.MONGOLAB_CONNECT_STRING)
+    .then(() => {
+        console.log("Connected to DB!")
+    });
 
 app.set("view engine", "vash");
 app.set("views", __dirname + "/views");

@@ -10,9 +10,13 @@ heroku login
 
 heroku create
 
-git 
+git init
+
+git remote add github https://github.com/rlasjunies/pluralsight-ci.git
 
 git push heroku master // to push the source code to heroku
+
+git push -u github master
 
 heroku ps:scale web=1
 
