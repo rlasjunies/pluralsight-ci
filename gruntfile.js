@@ -3,7 +3,7 @@
         ts: {
             default : {
                 src: ["spa/*.ts","Scripts/typings/*.ts"],
-                watch: ".",
+                watch: "spa/.",
                 sourceMap: true,
                 out: "Scripts/spa.js",
                 reference: "spa/_references.ts"

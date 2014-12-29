@@ -22,7 +22,7 @@ describe("get jobs", function () {
                 jobs = collection;
                 done();
             });
-    });
+    }); 
 
     it("should never be empty since jobs are seeded", function (done) {
         expect(jobs.length).to.be.at.least(1);

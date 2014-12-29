@@ -27,7 +27,7 @@ export function jobModel(): IJobModel {
 
 export function findJobs(query) {
     return Promise.cast(jobModel().find(query).exec());
-}
+} 
 
 var createJob = Promise.promisify(jobModel().create, jobModel());
 
