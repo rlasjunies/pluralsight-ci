@@ -12,8 +12,11 @@ declare module "mongoose" {
   function createConnection(host: string, database_name: string, port?: number, options?: ConnectionOption): Connection;
   function disconnect(callback?: (err?: any) => void): Mongoose;
 
+    //function model<T extends Document>(name: string, options?: Object): Collection;
   function model<T extends Document>(name: string, schema: Schema, collection?: string, skipInit?: boolean): Model<T>;
-  function modelNames(): string[];
+    function model<T extends Document>(name: string, schema?: Schema, collection?: string, skipInit?: boolean): Model<T>;
+  
+    function modelNames(): string[];
   function plugin(plugin: (schema: Schema, options?: Object) => void, options?: Object): Mongoose;
 
   function get(key: string): any;
@@ -68,7 +71,9 @@ declare module "mongoose" {
     mongos?: boolean;
   }
 
-  export interface Collection {
+    export interface Collection {
+        drop(resolve, reject):void;
+        drop(callback): void;
   }
 
 

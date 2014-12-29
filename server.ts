@@ -24,5 +24,9 @@ app.get('*', (req: express.Request, res: express.Response, next) => {
     res.render("index.html");
 });
 
-app.listen(process.env.PORT, process.env.IP);
-console.log("webserver started!");
+if (!process.env.PORT) process.env.PORT = 3000;
+
+var srv = app.listen(process.env.PORT, process.env.IP);
+srv.on('listening', () => {
+    console.log("webserver listening http requests!");
+});

@@ -1,4 +1,5 @@
 ﻿import mongoose = require("mongoose");
+import Promise = require("bluebird");
 
 export interface IJobModel extends mongoose.Model<IJobDocument> {
 }
@@ -20,24 +21,38 @@ jobSchema.add({
     description: { type: String }
 });
 
-export function jobs(): IJobModel {
-    return <IJobModel>mongoose.model<IJobDocument>('Job', jobSchema);
+export function jobModel(): IJobModel {
+    return <IJobModel>mongoose.model<IJobDocument>('job', jobSchema);
 }
 
-export function populate() {
-    var jobModel = jobs(); //mongoose.model<IJobDocument>('job');
+export function findJobs(query) {
+    return Promise.cast(jobModel().find(query).exec());
+}
 
-    jobModel.find({}, (err, jobs) => {
-        if (jobs.length === 0) {
-            var tmpJob: IJobDocument;
-            jobModel.create({ title: 'Cook', description: 'Chef required' });
-            jobModel.create({ title: 'programmer', description: 'Super programmer required' });
-            jobModel.create({ title: 'Project manager', description: 'Super project manager required' });
+var createJob = Promise.promisify(jobModel().create, jobModel());
+
+export function resetJobs() {
+    return new Promise((resolve, reject) => {
+        mongoose.connection.collection('jobs').drop(resolve, reject);
+    });
+}
+
+var jobsArray = [
+    { title: 'Cook', description: 'Chef required' },
+    { title: 'programmer', description: 'Super programmer required' },
+    { title: 'Project manager', description: 'Super project manager required' }
+];
+
+export function populate() {
+
+    return findJobs({}).then((jobCollection) => {
+        if (jobCollection.length === 0) {
+
+            return Promise.map(jobsArray, (job) => {
+                return createJob(job);
+            });
 
             console.log("Jobs seeded!");
-        } else {
-            console.log("Jobs already exists!");
         }
     });
-
 }

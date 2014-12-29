@@ -13,6 +13,8 @@
     "vash": "^0.7.12-1"
   },
   "devDependencies": {
+    "bluebird": "^2.5.1",
+    "chai": "^1.10.0",
     "grunt": "^0.4.5",
     "grunt-cli": "^0.1.13",
     "grunt-ts": "^2.0.1",

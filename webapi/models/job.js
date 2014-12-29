@@ -1,25 +1,37 @@
 var mongoose = require("mongoose");
+var Promise = require("bluebird");
 var jobSchema = new mongoose.Schema();
 jobSchema.add({
     title: { type: String },
     description: { type: String }
 });
-function jobs() {
-    return mongoose.model('Job', jobSchema);
+function jobModel() {
+    return mongoose.model('job', jobSchema);
 }
-exports.jobs = jobs;
+exports.jobModel = jobModel;
+function findJobs(query) {
+    return Promise.cast(jobModel().find(query).exec());
+}
+exports.findJobs = findJobs;
+var createJob = Promise.promisify(jobModel().create, jobModel());
+function resetJobs() {
+    return new Promise(function (resolve, reject) {
+        mongoose.connection.collection('jobs').drop(resolve, reject);
+    });
+}
+exports.resetJobs = resetJobs;
+var jobsArray = [
+    { title: 'Cook', description: 'Chef required' },
+    { title: 'programmer', description: 'Super programmer required' },
+    { title: 'Project manager', description: 'Super project manager required' }
+];
 function populate() {
-    var jobModel = jobs(); //mongoose.model<IJobDocument>('job');
-    jobModel.find({}, function (err, jobs) {
-        if (jobs.length === 0) {
-            var tmpJob;
-            jobModel.create({ title: 'Cook', description: 'Chef required' });
-            jobModel.create({ title: 'programmer', description: 'Super programmer required' });
-            jobModel.create({ title: 'Project manager', description: 'Super project manager required' });
+    return findJobs({}).then(function (jobCollection) {
+        if (jobCollection.length === 0) {
+            return Promise.map(jobsArray, function (job) {
+                return createJob(job);
+            });
             console.log("Jobs seeded!");
-        }
-        else {
-            console.log("Jobs already exists!");
         }
     });
 }

@@ -6,6 +6,8 @@
     <Name>jobFinder</Name>
     <RootNamespace>jobFinder</RootNamespace>
     <NodejsPort>3000</NodejsPort>
+    <LaunchUrl>
+    </LaunchUrl>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -38,6 +40,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Scripts\angular-resource.min.js.map" />
     <Content Include="Scripts\angular.min.js.map" />
     <Content Include="Scripts\jquery-1.11.1.min.map" />
     <Content Include="styles\bootstrap-theme.css" />
@@ -61,8 +64,11 @@
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular-sanitize.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular-scenario.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\bluebird\bluebird.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\body-parser\body-parser.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\chai\chai.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\jquery\jquery.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\mocha\mocha.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\moment\moment.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\mongoose\mongoose.d.ts" />
     <TypeScriptCompile Include="server.ts" />
@@ -74,6 +80,7 @@
     <TypeScriptCompile Include="spa\app.ts" />
     <TypeScriptCompile Include="spa\jobsController.ts" />
     <TypeScriptCompile Include="spa\_references.ts" />
+    <TypeScriptCompile Include="test\jobs-data-specs.ts" />
     <TypeScriptCompile Include="webapi\routes\jobsGet.ts" />
     <TypeScriptCompile Include="webapi\models\job.ts" />
     <TypeScriptCompile Include="webapi\services\config.ts" />
@@ -81,6 +88,10 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="fonts\" />
+    <Folder Include="Scripts\typings\bluebird\" />
+    <Folder Include="Scripts\typings\chai\" />
+    <Folder Include="Scripts\typings\mocha\" />
+    <Folder Include="test\" />
     <Folder Include="Scripts\typings\angular-ui\" />
     <Folder Include="Scripts\typings\angularjs\" />
     <Folder Include="Scripts\typings\body-parser\" />
@@ -102,6 +113,8 @@
   <ItemGroup>
     <Compile Include="gruntfile.js" />
     <Compile Include="Scripts\angular-mocks.js" />
+    <Compile Include="Scripts\angular-resource.js" />
+    <Compile Include="Scripts\angular-resource.min.js" />
     <Compile Include="Scripts\angular-ui-router.js" />
     <Compile Include="Scripts\angular-ui-router.min.js" />
     <Compile Include="Scripts\angular.js" />

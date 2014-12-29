@@ -1,6 +1,6 @@
 var xJob = require('../models/job');
 function getJobs(req, res, next) {
-    var jobs = xJob.jobs();
+    var jobs = xJob.jobModel();
     jobs.find({}, function (err, jobs) {
         if (err)
             return res.status(500).write({ message: "Error getting jobs!" });

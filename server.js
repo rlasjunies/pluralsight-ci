@@ -17,6 +17,10 @@ app.get('/api/jobs', xJobsGet.getJobs);
 app.get('*', function (req, res, next) {
     res.render("index.html");
 });
-app.listen(process.env.PORT, process.env.IP);
-console.log("webserver started!");
+if (!process.env.PORT)
+    process.env.PORT = 3000;
+var srv = app.listen(process.env.PORT, process.env.IP);
+srv.on('listening', function () {
+    console.log("webserver listening http requests!");
+});
 //# sourceMappingURL=server.js.map
