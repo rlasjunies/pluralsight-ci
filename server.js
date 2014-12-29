@@ -11,6 +11,6 @@ app.use('/spa', express.static(__dirname + '/spa'));
 app.get('*', function (req, res, next) {
     res.render("index.html");
 });
-app.listen(3000);
+app.listen(process.env.PORT, process.env.IP);
 console.log("webserver started!");
 //# sourceMappingURL=server.js.map
