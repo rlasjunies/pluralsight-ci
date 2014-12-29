@@ -1,7 +1,11 @@
 ﻿import express = require("express");
 import vash = require("vash");
 
+import xDb = require("./webapi/services/db");
+import xJobsGet = require("./webapi/routes/jobsGet");
+
 var app = express();
+new xDb.db("jobfinder");
 
 app.set("view engine", "vash");
 app.set("views", __dirname + "/views");
@@ -11,11 +15,12 @@ app.use('/Scripts', express.static(__dirname + '/Scripts'));
 app.use('/styles', express.static(__dirname + '/styles'));
 app.use('/fonts', express.static(__dirname + '/fonts'));
 app.use('/spa', express.static(__dirname + '/spa'));
+
+app.get('/api/jobs', xJobsGet.getJobs);
  
 app.get('*', (req: express.Request, res: express.Response, next) => {
     res.render("index.html");
 });
-
 
 app.listen(process.env.PORT, process.env.IP);
 console.log("webserver started!");

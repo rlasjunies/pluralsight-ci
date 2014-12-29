@@ -21,7 +21,7 @@
     <OutputPath>.</OutputPath>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <ProjectTypeGuids>{3AF33F2E-1136-4D97-BBB7-1795711AC8B8};{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}</ProjectTypeGuids>
-    <ProjectView>ProjectFiles</ProjectView>
+    <ProjectView>ShowAllFiles</ProjectView>
     <TypeScriptSourceMap>true</TypeScriptSourceMap>
     <TypeScriptModuleKind>CommonJS</TypeScriptModuleKind>
     <EnableTypeScript>true</EnableTypeScript>
@@ -61,7 +61,10 @@
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular-sanitize.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular-scenario.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\body-parser\body-parser.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\jquery\jquery.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\moment\moment.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\mongoose\mongoose.d.ts" />
     <TypeScriptCompile Include="server.ts" />
     <Content Include="package.json" />
     <Content Include="README.md" />
@@ -71,12 +74,19 @@
     <TypeScriptCompile Include="spa\app.ts" />
     <TypeScriptCompile Include="spa\testController.ts" />
     <TypeScriptCompile Include="spa\_references.ts" />
+    <TypeScriptCompile Include="webapi\routes\jobsGet.ts" />
+    <TypeScriptCompile Include="webapi\models\job.ts" />
+    <TypeScriptCompile Include="webapi\services\config.ts" />
+    <TypeScriptCompile Include="webapi\services\db.ts" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="fonts\" />
     <Folder Include="Scripts\typings\angular-ui\" />
     <Folder Include="Scripts\typings\angularjs\" />
+    <Folder Include="Scripts\typings\body-parser\" />
     <Folder Include="Scripts\typings\jquery\" />
+    <Folder Include="Scripts\typings\moment\" />
+    <Folder Include="Scripts\typings\mongoose\" />
     <Folder Include="spa\" />
     <Folder Include="webapi\" />
     <Folder Include="styles\" />
@@ -85,6 +95,9 @@
     <Folder Include="Scripts\typings\" />
     <Folder Include="Scripts\typings\express\" />
     <Folder Include="Scripts\typings\node\" />
+    <Folder Include="webapi\models\" />
+    <Folder Include="webapi\routes\" />
+    <Folder Include="webapi\services\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="gruntfile.js" />
