@@ -1,0 +1,49 @@
+{
+    "src": null,
+    "main": "index.html",
+    "buildOnSave": true,
+    "projectType": "standard",
+    "compiler": {
+        "noLib": false,
+        "removeComments": false,
+        "noImplicitAny": false,
+        "declaration": false,
+        "sourceMap": true,
+        "propagateEnumConstants": false,
+        "allowAutomaticSemicolonInsertion": true,
+        "target": 1,
+        "module": 1,
+        "outDir": null,
+        "out": null
+    },
+    "codeFormat": {
+        "NewLineCharacter": "\r\n",
+        "ConvertTabsToSpaces": false,
+        "IndentSize": 4,
+        "TabSize": 4
+    },
+    "customBuild": {
+        "name": null,
+        "command": null,
+        "directory": null,
+        "environment": null,
+        "ownConsole": false
+    },
+    "customRun": {
+        "name": "node",
+        "command": "node.exe server.js",
+        "directory": ".",
+        "environment": ".",
+        "ownConsole": false
+    },
+    "documentation": {
+        "includeDeclarations": false,
+        "outputDirectory": null,
+        "readme": null,
+        "theme": "default"
+    },
+    "tslint": {
+        "useLint": true,
+        "lintFile": null
+    }
+}
