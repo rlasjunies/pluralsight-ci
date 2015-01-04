@@ -1,0 +1,1 @@
+{"version":3,"file":"jobsController.js","sourceRoot":"","sources":["../../spa/jobsController.ts"],"names":[],"mappings":"AA+BA,OAAO,CAAC,MAAM,CAAC,KAAK,CAAC,CAAC,UAAU,CAAC,gBAAgB,EAAE,UAAC,MAAkB,EAAE,SAAuC;IAC3G,MAAM,CAAC,OAAO,GAAG,mBAAmB,CAAC;IAErC,MAAM,CAAC,IAAI,GAAG,SAAS,CAAe,WAAW,CAAC,CAAC,KAAK,EAAE,CAAC;AAC/D,CAAC,CAAC,CAAC"}

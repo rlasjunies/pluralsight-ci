@@ -1,23 +1,24 @@
 ﻿import chai = require("chai");
-import xDb = require('../webapi/services/db');
+import xDbLib = require('../webapi/services/db');
 import xConfig = require('../webapi/services/config');
-import xJob = require('../webapi/models/job');
+import jobsModelLib = require('../webapi/jobs/jobsModel');
+import jobsDataLib = require('../webapi/jobs/jobsData');
+
 import Promise = require('bluebird');
 import mongoose = require('mongoose');
 
-//var Promise = promise;
 var expect = chai.expect;
 
 
 describe("get jobs", function () {
 
-    var jobs: xJob.IJobDocument[];
+    var jobs: jobsModelLib.IJobDocument[];
 
     before((done) => {
-        xDb.connectDB(xConfig.MONGOLAB_CONNECT_STRING)
-            .then(xJob.resetJobs)
-            .then(xJob.populate)
-            .then(xJob.findJobs)
+        xDbLib.connectDB(xConfig.MONGOLAB_CONNECT_STRING)
+            .then(jobsDataLib.resetJobs)
+            .then(jobsDataLib.populate)
+            .then(jobsModelLib.findJobs)
             .then(function (collection) {
                 jobs = collection;
                 done();
@@ -37,6 +38,11 @@ describe("get jobs", function () {
     it("decription should not be empty", function (done) {
         expect(jobs[0].description).to.be.not.empty;
         done();
+    });
+
+    after((done) => {
+        xDbLib.disConnectDB()
+            .then(done);
     });
 
 });

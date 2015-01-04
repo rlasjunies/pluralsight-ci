@@ -1,13 +1,13 @@
 var chai = require("chai");
-var xDb = require('../webapi/services/db');
+var xDbLib = require('../webapi/services/db');
 var xConfig = require('../webapi/services/config');
-var xJob = require('../webapi/models/job');
-//var Promise = promise;
+var jobsModelLib = require('../webapi/jobs/jobsModel');
+var jobsDataLib = require('../webapi/jobs/jobsData');
 var expect = chai.expect;
 describe("get jobs", function () {
     var jobs;
     before(function (done) {
-        xDb.connectDB(xConfig.MONGOLAB_CONNECT_STRING).then(xJob.resetJobs).then(xJob.populate).then(xJob.findJobs).then(function (collection) {
+        xDbLib.connectDB(xConfig.MONGOLAB_CONNECT_STRING).then(jobsDataLib.resetJobs).then(jobsDataLib.populate).then(jobsModelLib.findJobs).then(function (collection) {
             jobs = collection;
             done();
         });
@@ -23,6 +23,9 @@ describe("get jobs", function () {
     it("decription should not be empty", function (done) {
         expect(jobs[0].description).to.be.not.empty;
         done();
+    });
+    after(function (done) {
+        xDbLib.disConnectDB().then(done);
     });
 });
 //# sourceMappingURL=jobs-data-specs.js.map

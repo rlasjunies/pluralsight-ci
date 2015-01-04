@@ -1,4 +1,6 @@
-/// <reference path="../Scripts/typings/angularjs/angular.d.ts" />
+///ts:ref=angular.d.ts
+/// <reference path="../Scripts/typings/angularjs/angular.d.ts"/> ///ts:ref:generated
 "use strict";
-var app = angular.module("app", ['ngResource']);
+angular.module("app", ['ngResource']);
+var exports = {}; //stupid proposal to avoid exports errors from commonjs typescript compilation
 //# sourceMappingURL=app.js.map
